@@ -25,6 +25,15 @@ app.use("/api/users", Postsroute);
 
 app.use("/api/order", orderRoute);
 
+// ENSURE THE SERVER IS AWAKE WITH CRONJOBS
+
+app.get("/wake-up", (req, res) => {
+  res.json({
+    responseType: "success",
+    message: "Server is awake",
+  });
+});
+
 mongoose
   .connect(process.env.MONGOURL, {
     useNewUrlParser: true,
