@@ -6,6 +6,7 @@ import ProductsRoute from "./routes/products.js";
 import Postsroute from "./routes/users.js";
 
 import orderRoute from "./routes/order.js";
+import AllRoute from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/api/products", ProductsRoute);
 app.use("/api/users", Postsroute);
 
 app.use("/api/order", orderRoute);
+app.use("/api/all", AllRoute);
 
 // ENSURE THE SERVER IS AWAKE WITH CRONJOBS
 

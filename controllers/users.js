@@ -1,3 +1,4 @@
+import users from "../models/users.js";
 import Users from "../models/users.js";
 import bcrypt from "bcryptjs";
 export const createUser = async (req, res, next) => {
@@ -37,6 +38,18 @@ export const checkUser = async (req, res, next) => {
     }
 
     return res.status(200).json({ message: "success", user: user });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const allusers = await users.find();
+    if (!allusers) {
+      return res.status(404).json({ message: "not found" });
+    }
+    return res.status(200).json({ allusers });
   } catch (err) {
     next(err);
   }
